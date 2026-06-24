@@ -1,3 +1,4 @@
+
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
@@ -53,7 +54,7 @@ class UserManager(BaseUserManager):
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     """Единая учётная запись для всех ролей (PRD 7.1 — USER)."""
 
-    email = models.EmailField(null=True, blank=True)
+    email = models.EmailField(unique=True) #(null=True, blank=True)
     full_name = models.CharField(max_length=255, blank=True)
     phone = models.CharField(max_length=32, blank=True)
 
